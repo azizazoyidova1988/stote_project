@@ -1,0 +1,1 @@
+# stote_project
