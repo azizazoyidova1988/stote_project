@@ -1,0 +1,287 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+
+	
+	<section class="hero-wrap">
+		<div class="home-slider owl-carousel js-fullheight">
+			<div class="slider-item js-fullheight" style="background-image:url({% static 'store/images/slide-3.jpg' %});">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+						<div class="col-md-12 ftco-animate">
+							<div class="text w-100 mt-5 text-center">
+								<span class="subheading"> Hotel</h2></span>
+								<h1>Welcome to our charming studio</h1>
+								<span class="subheading-2">2021</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="slider-item js-fullheight" style="background-image:url({% static 'store/images/2.jpg' %});">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+						<div class="col-md-12 ftco-animate">
+							<div class="text w-100 mt-5 text-center">
+								<span class="subheading"> Hotel</h2></span>
+								<h1>Best Quality</h1>
+								<span class="subheading-2 sub">Design</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<!--book table-->
+	<section class="ftco-section ftco-wrap-about ftco-no-pb ftco-no-pt">
+		<div class="container">
+			<div class="row no-gutters">
+				<div class="col-sm-4 p-4 p-md-5 d-flex align-items-center justify-content-center bg-primary">
+					<form action="#" class="appointment-form" method="post">
+						{% csrf_token %}
+						<h3 class="mb-3">Your Contact</h3>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" name="name" required="" id="id_name" class="form-control" placeholder="Name">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="email" name="email"  required="" id="id_email" class="form-control" placeholder="Email">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" name="phone"  required="" id="id_phone" class="form-control" placeholder="Phone">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<button type="submit"  class="btn btn-white py-3 px-4">Send Now</button>
+								</div>
+							</div>
+						</div>
+					</form>
+
+  				</div>
+  				<div class="col-sm-8 wrap-about py-5 ftco-animate img" style="background-image: url({% static 'store/images/services-img-4.jpg' %});">
+  					<div class="row pb-5 pb-md-0">
+  						<div class="col-md-12 col-lg-7">
+  							<div class="heading-section mt-5 mb-4">
+  								<div class="pl-lg-3 ml-md-5">
+  									<span class="subheading">About</span>
+  									<h2 class="mb-4">Welcome </h2>
+									<p> Far far away, behind the word mountains,
+										far from the countries Vokalia and Consonantia,
+										there live the blind texts. Separated they live
+										in Bookmarksgrove right at the coast of the
+										Semantics, a large language ocean.</p>
+  								</div>
+  							</div>
+
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</section>
+
+	<section class="ftco-section ftco-intro" style="background-image: url({% static 'store/images/4.jpg ' %});">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<span>Now Booking</span>
+					<h2>Private Design &amp; Happy Hours</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+<!--projects-->
+<section class="ftco-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-2">
+				<div class="col-md-7 text-center heading-section ftco-animate">
+					<span class="subheading">Services</span>
+					<h2 class="mb-4">Our Services</h2>
+				</div>
+			</div>
+			<div class="row">
+				{% for ser in service %}
+				{% if forloop.counter0 < 4 %}
+				<div class="col-md-3 ftco-animate">
+					<div class="blog-entry">
+						<a href="blog-single.html" class="block-20" style="background-image: url(/media/{{ser.image}});">
+						</a>
+						<div class="text px-4 pt-3 pb-4">
+							<div class="meta">
+								<div>{{bl.created_at}}</div>
+								<div>{{ser.name}}</div>
+							</div>
+
+							<p class="clearfix">
+								 {{ser.description_1}}
+
+							</p>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				{% endfor %}
+
+					</div>
+
+		</div>
+	</section>
+
+<!--customer-->
+	<section class="ftco-section testimony-section" style="background-image: url({% static 'store/images/form-img.jpg' %});">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row justify-content-center mb-3 pb-2">
+				<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+					<span class="subheading">Testimony</span>
+					<h2 class="mb-4">Happy Customer</h2>
+				</div>
+			</div>
+			<div class="row ftco-animate justify-content-center">
+				<div class="col-md-7">
+					<div class="carousel-testimony owl-carousel ftco-owl">
+						{% for test in testimonials %}
+						{% if forloop.counter0 < 3 %}
+						<div class="item">
+							<div class="testimony-wrap text-center">
+								<div class="text p-3">
+									<p class="mb-4"> {{test.description}}</p>
+									<div class="user-img mb-4" style="background-image: url(/media/{{test.image}})">
+										<span class="quote d-flex align-items-center justify-content-center">
+											<i class="fa fa-quote-left"></i>
+										</span>
+									</div>
+									<p class="name">{{test.name}}</p>
+									<span class="position">{{test.job}}</span>
+								</div>
+							</div>
+						</div>
+
+						{% endif%}
+						{% endfor%}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<!--	team-->
+	<section class="ftco-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-2">
+				<div class="col-md-7 text-center heading-section ftco-animate">
+					<span class="subheading">Teams</span>
+					<h2 class="mb-4">Our Teams</h2>
+				</div>
+			</div>	
+			<div class="row">
+				{% for tea in teams %}
+				{% if forloop.counter0 < 4 %}
+				<div class="col-md-6 col-lg-3 ftco-animate">
+					<div class="staff">
+						<div class="img" style="background-image: url(/media/{{tea.image}});"></div>
+						<div class="text px-4 pt-2">
+							<h3>{{tea.name}}</h3>
+							<div class="faded">
+								<p>{{chef.description}}</p>
+								<ul class="ftco-social d-flex">
+									<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+									<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+									<li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+									<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+<!-- about-->
+	<section class="ftco-section ftco-no-pt ftco-no-pb">
+		<div class="container">
+			{% for ab in var %}
+			<div class="row d-flex">
+
+				<div class="col-md-6 d-flex">
+					<div class="img img-2 w-100 mr-md-2" style="background-image: url({{ab.image1}});"></div>
+					<div class="img img-2 w-100 ml-md-2" style="background-image: url({{ab.image2}});"></div>
+				</div>
+				<div class="col-md-6 ftco-animate makereservation p-4 p-md-5">
+					<div class="heading-section ftco-animate mb-5">
+						<span class="subheading">This is our secrets</span>
+						<h2 class="mb-4">{{ab.title}}</h2>
+						<p> {{ab.desc}}</p>
+						<p><a href="#" class="btn btn-primary">Learn more</a></p>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</section>
+<!--blog-->
+	<section class="ftco-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-2">
+				<div class="col-md-7 text-center heading-section ftco-animate">
+					<span class="subheading">Blog</span>
+					<h2 class="mb-4">Recent Blog</h2>
+				</div>
+			</div>
+			<div class="row">
+				{% for bl in blog %}
+				{% if forloop.counter0 < 3 %}
+				<div class="col-md-4 ftco-animate">
+					<div class="blog-entry">
+						<a href="blog-single.html" class="block-20" style="background-image: url(/media/{{bl.image}});">
+						</a>
+						<div class="text px-4 pt-3 pb-4">
+							<div class="meta">
+								<div>{{bl.created_at}}</div>
+								<div>{{bl.author}}</div>
+							</div>
+							<h3 class="heading"><a href="{% url 'blog_single' news_id=bl.id %}">{{ bl.title }}</a></h3>
+							<p class="clearfix">
+								<a href="{% url 'blog_single' news_id=bl.id %}" class="float-left read btn btn-primary">Read more</a>
+								<a href="{% url 'blog_single' news_id=bl.id %}" class="float-right meta-chat"><span class="fa fa-comment"></span> {{bl.description_1}}</a>
+
+							</p>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				{% endfor %}
+
+					</div>
+
+		</div>
+	</section>
+
+	<section class="ftco-section ftco-no-pt ftco-no-pb ftco-intro bg-primary">
+		<div class="container py-5">
+			<div class="row py-2">
+				<div class="col-md-12 text-center">
+					<h2>We serve only you</h2>
+					<a href="{% url 'contact' %}" class="btn btn-white btn-outline-white">SEND MESSAGE</a>
+				</div>
+			</div>
+		</div>
+	</section>
+{%endblock%}
+
+

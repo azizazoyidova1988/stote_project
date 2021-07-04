@@ -1,0 +1,106 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+	
+	<section class="hero-wrap hero-wrap-2" style="background-image: url('{% static 'store/images/44.jpg' %}');" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text align-items-end justify-content-center">
+				<div class="col-md-9 ftco-animate text-center mb-5">
+					<h1 class="mb-2 bread">Our Team</h1>
+					<p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home <i class="fa fa-chevron-right"></i></a>
+					</span> <span>Team <i class="fa fa-chevron-right"></i></span></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="ftco-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-2">
+				<div class="col-md-7 text-center heading-section ftco-animate">
+					<span class="subheading">Teams</span>
+					<h2 class="mb-4">Our Teams</h2>
+				</div>
+			</div>	
+			<div class="row">
+				{% for team in teams %}
+				{% if forloop.counter0 < 4 %}
+				<div class="col-md-6 col-lg-3 ftco-animate">
+					<div class="staff">
+						<div class="img" style="background-image: url(/media/{{team.image}});"></div>
+						<div class="text px-4 pt-2">
+							<h3>Name: {{team.name}}</h3>
+							<span class="position mb-2">Mobil_phone: {{team.mobil_phone}}</span>
+							<div class="faded">
+								<p>Email:{{team.email}}</p>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section ftco-wrap-about ftco-no-pb ftco-no-pt">
+		<div class="container">
+			<div class="row no-gutters">
+				<div class="col-sm-4 p-4 p-md-5 d-flex align-items-center justify-content-center bg-primary">
+					<form action="#" class="appointment-form" method="post">
+						{% csrf_token %}
+						<h3 class="mb-3">Your Contact</h3>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" name="name" required="" id="id_name" class="form-control" placeholder="Name">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="email" name="email"  required="" id="id_email" class="form-control" placeholder="Email">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" name="phone"  required="" id="id_phone" class="form-control" placeholder="Phone">
+								</div>
+							</div>
+
+								<div class="col-md-12">
+								<div class="form-group">
+									<button type="submit"  class="btn btn-white py-3 px-4">Send</button>
+								</div>
+							</div>
+						</div>
+					</form>
+
+  				</div>
+  				<div class="col-sm-8 wrap-about py-5 ftco-animate img" style="background-image: url({% static 'store/images/nathan.jpg' %});">
+  					<div class="row pb-5 pb-md-0">
+  						<div class="col-md-12 col-lg-7">
+  							<div class="heading-section mt-5 mb-4">
+  								<div class="pl-lg-3 ml-md-5">
+  									<span class="subheading">About</span>
+  									<h2 class="mb-4">Welcome to Interico</h2>
+									<p> Far far away, behind the word mountains,
+										far from the countries Vokalia and Consonantia,
+										there live the blind texts. Separated they live
+										in Bookmarksgrove right at the coast of the
+										Semantics, a large language ocean.</p>
+  								</div>
+  							</div>
+
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</section>
+
+
+{% endblock content %}
